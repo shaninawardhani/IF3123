@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--
+	NIM		: 3411181164
+	Nama	: Shanina Aisyah Wardhani
+	Kelas	: DSE-C
+-->
+<html>
+<head>
+	<title>DATA-TYPE CHECKS</title>
+</head>
+<body>
+	<form name="myForm" action="" onsubmit="return validateForm()" method="POST">
+		Nomor Telepon<br>
+		<input type="text" id="telp" name="telp">
+		<input type="submit" value="Submit">
+	</form>
+	<script type="text/javascript">
+		function validateForm(){
+			var telp = document.myForm.telp.value;
+			if(isNaN(telp)){
+				alert("Nomor telepon harus berupa angka");
+				return false;
+			}else{
+				return true;
+			}
+		}
+	</script>
+</body>
+</html>
