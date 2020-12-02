@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+	NIM		: 3411181164
+	Nama	: Shanina Aisyah Wardhani
+	Kelas	: DSE-C
+-->
+<html>
+<head>
+	<title>EXISTENCE CHECKS</title>
+</head>
+<body>
+	<form name="myForm" action="" onsubmit="return validateForm()" method="POST">
+		Username<br><input type="text" id="username" name="username">
+		<input type="submit" value="Submit">
+	</form>
+	<script type="text/javascript">
+		function validateForm(){
+			var user = document.myForm.username.value;
+			if (user == ""){
+				alert("Username tidak boleh kosong");
+				return false;
+			}else{
+				return true;
+			}
+		}
+	</script>
+</body>
+</html>
