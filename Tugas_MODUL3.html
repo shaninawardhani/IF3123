@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--
+	NIM		: 3411181164
+	Nama	: Shanina Aisyah Wardhani
+	Kelas	: DSE-C
+-->
+<html>
+<head>
+	<title>Tugas Implementasi Interface</title>
+</head>
+<body>
+	<form name="formTugas" id="tugasku" action="#" method="POST">
+		<input type="text" name="username" id="username" placeholder="Username"><br>
+		<input type="password" name="password" id="pass" placeholder="Password"><br>
+		<input type="password" name="repeat" id="repeat" placeholder="Confirm Password"><br>
+		<input type="text" name="email" id="email" placeholder="Email"><br>
+		<input type="text" name="telp" id="telp" placeholder="Telephone Number"><br>
+		<textarea name="address" id="address" style="width: 167px;" placeholder="Address"></textarea><br>
+		<input type="submit" name="submitbutton" value="Submit" onclick="validateForm()">
+	</form>
+	<script type="text/javascript">
+		function validateForm(){
+			var user = document.formTugas.username.value;
+			var upass = document.formTugas.pass.value;
+			var repass = document.formTugas.repeat.value;
+			var uemail = document.formTugas.email.value;
+			var utelp = document.formTugas.telp.value;
+			var uaddress = document.formTugas.address.value;
+
+			if(validateUser(user,3,15)){
+				if(validatePass(upass)){
+					if(repeatPass(upass,repass)){
+						if(validateEmail(uemail)){
+							if(validateTelp(utelp)){
+								if(validateAddress(uaddress)){
+								}
+							}
+						}
+					}
+				}
+			}
+			else{
+				alert("Form is unsuccessfully submitted!");
+				return false;
+			}
+			
+		}
+		function validateUser(user, min, max){
+			// Username should have length between 3 to 15 digits
+			var userlen = user.length;
+			if (userlen == 0 || userlen < min || userlen >= max){
+				alert("Username should have length between "+min+" to "+max+" characters");
+				user.focus();
+				return false;
+			}
+			return true;
+		}
+		function validatePass(upass){
+			// Password must be at least 4 digits (include 1 symbol, 1 uppercase letter, and 1 numeric digit)
+			var passPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{4,}$/;
+			if (upass.match(passPattern)){
+				return true;
+			}else{
+				alert("Password must be at least 4 digits (include 1 symbol, 1 uppercase letter, and 1 numeric digit)");
+				upass.focus();
+				return false;
+			}
+		}
+		function repeatPass(upass,repass){
+			// Repeated password must be equal to first password
+			if (upass == repass){
+				return true;
+			}else{
+				alert("Password doesn't match.");
+				repass.focus();
+				return false;
+			}
+		}
+		function validateEmail(uemail){
+			// Email must be matched to the regex pattern based on email format
+			var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			if (uemail.match(emailPattern)){
+				document.formTugas.email.focus();
+				return true;
+			}else{
+				alert("Your e-Mail is invalid.");
+				document.formTugas.email.focus();
+				return false;
+			}
+		}
+		function validateTelp(utelp){
+			// Telephone number must have length between 10 to 12 digits
+			var telpPattern = /^\d{10,12}$/;
+			if (utelp.match(telpPattern)){
+				return true;
+			}else{
+				alert("Your telephone number must have length between 10 to 12 digits.");
+				utelp.focus();
+				return false;
+			}
+		}
+		function validateAddress(uaddress){
+			//Address must not be empty
+			var addPattern = /^\w.{1,}$/;
+			if (uaddress.match(addPattern)){
+				alert("Form is successfully submitted!");
+				return true;
+			}else{
+				alert("Your address is invalid.");
+				uaddress.focus();
+				return false;
+			}
+		}
+	</script>
+</body>
+</html>
